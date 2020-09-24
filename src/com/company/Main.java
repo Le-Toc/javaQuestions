@@ -19,7 +19,7 @@ public class Main {
     }
 
     public static void chapter6() {
-        q1();
+        //q1();
         q2();
     }
 
@@ -42,11 +42,21 @@ public class Main {
 
         int[] array = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-        q2SwapFirstAndLast(array);
-        q2Shift1ToTheRight(array);
+        //q2ASwapFirstAndLast(array);
+        //q2BShift1ToTheRight(array);
+        q2PartC(array);
     }
 
-    private static void q2Shift1ToTheRight(int[] array) {
+    private static void q2PartC(int[] array) {
+        // Replace all even elements with 0.
+        for (int i = 0; i < array.length; i++)
+            if (array[i] % 2 == 0)
+                array[i] = 0;
+
+        printArray(array, "Replace even numbers with 0");
+    }
+
+    private static void q2BShift1ToTheRight(int[] array) {
         // Shift all elements by one to the right and move the last element into the first
 
         int last = array[array.length-1];
@@ -60,7 +70,7 @@ public class Main {
         printArray(array, "Shift one to the right");
     }
 
-    private static void q2SwapFirstAndLast(int[] array) {
+    private static void q2ASwapFirstAndLast(int[] array) {
         // Swap the first and last elements in the array.
         int first = array[0];
         int last = array[array.length-1];
