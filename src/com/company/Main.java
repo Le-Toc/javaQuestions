@@ -31,7 +31,7 @@ public class Main {
             position. For example, 1 4 9 16 25 would be transformed into 25 1 4 9 16.
             c. Replace all even elements with 0.
             d. Replace each element except the first and last by the larger of its two neighbors.
-            programming exercises 307 e. Remove the middle element if the array length is odd, or the middle two
+            e. Remove the middle element if the array length is odd, or the middle two
             elements if the length is even.
             f.  Move all even elements to the front, otherwise preserving the order of the elements.
             g. Return the second-largest element in the array.
@@ -44,7 +44,30 @@ public class Main {
 
         //q2ASwapFirstAndLast(array);
         //q2BShift1ToTheRight(array);
-        q2PartC(array);
+        //q2PartC(array);
+        q2PartD();
+    }
+
+    private static void q2PartD() {
+        // Replace each element except the first and last by the larger of its two neighbors.
+        /*
+        Array is =          {51, 36, 84, 16, 13, 93, 81, 21, 69, 58}
+        Array should be =   {51, 84, 84, 84, 93, 93, 93, 93, 93, 58}
+        * */
+        int[] array = {51, 36, 84, 16, 13, 93, 81, 21, 69, 58};
+        int left, right;
+        for (int i = 1; i < array.length -1; i++)
+        {
+            left = array[i - 1];
+            if (left > array[i])
+                array[i] = left;
+
+            right = array[i + 1];
+            if (right > array[i])
+                array[i] = right;
+        }
+
+        printArray(array);
     }
 
     private static void q2PartC(int[] array) {
@@ -119,6 +142,13 @@ public class Main {
 
         System.out.print("\n" + array[0]);
         System.out.println(array[array.length - 1]);
+    }
+
+    private static void printArray(int[] array) {
+        for (int i = 0; i <= array.length-1; i++)
+        {
+            System.out.println(" Element [" + i + "]: " + array[i]);
+        }
     }
 
     private static void printArray(int[] array, String arrayName) {
