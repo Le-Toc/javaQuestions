@@ -1,0 +1,3 @@
+Solve question 2 part E with using arrays and arrayLists - DONE
+Clean up current code
+See about implementing the toString method in the print methods
