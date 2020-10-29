@@ -1,10 +1,9 @@
 //Look Up: http://best-practice-software-engineering.ifs.tuwien.ac.at/patterns/factory.html
 package com.company;
 
-import sun.awt.image.IntegerComponentRaster;
-
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
@@ -24,7 +23,7 @@ public class Main {
     }
 
     public static void chapter6() {
-        //q1();
+        q1();
         q2();
     }
 
@@ -45,26 +44,28 @@ public class Main {
             j.  Return true if the array contains duplicate elements (which need not be adjacent).
         * */
 
+        System.out.println("\n/********************* Question 2 *********************/");
         int[] array = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-        //q2ASwapFirstAndLast(array);
-        //q2BShift1ToTheRight(array);
-        //q2PartC(array);
-        //q2PartD();
+        q2PartA(array);
+        q2PartB(array);
+        q2PartC(array);
+        q2PartD();
         q2PartE();
     }
 
     public static void q2PartE(){
+        System.out.println("q2PartE:");
         // Remove the middle element if the array length is odd, or the middle two elements if the length is even.
 
-        //Using arrays
-        int[] unevenLengthArray = {0, 1, 2, 3, 4, 5, 6, 7, 8,};
+        // Using arrays
+        int[] unevenLengthArray = {0, 1, 2, 3, 4, 5, 6, 7, 8};
         removeMiddleElements(unevenLengthArray);
 
         int[] evenLengthArray = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         removeMiddleElements(evenLengthArray);
 
-        //Using arraylists
+        // Using arraylists
         ArrayList<Integer> unevenArrayList = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8));
         removeMiddleElementsWithArrayLists(unevenArrayList);
 
@@ -72,31 +73,17 @@ public class Main {
         removeMiddleElementsWithArrayLists(evenArrayList);
     }
 
-    private static void removeMiddleElementsWithArrayLists(ArrayList<Integer> arrayList) {
-        int elementsRemovals = 2; // Assuming array is even
-
-        if(arrayList.size() % 2 != 0) //if arraylist is uneven only take one element
-            elementsRemovals = 1;
-
-        for (int i = 1; i <= elementsRemovals; i++)
-            arrayList.remove(arrayList.size() / 2);
-
-        System.out.println(arrayList.toString());
-    }
-
     private static void removeMiddleElements(int[] array) {
         int[] newArray;
-        if(array.length % 2 == 0)//even
+        if(array.length % 2 == 0)// even
         {
             int firstNoToRemove = (array.length / 2) -1;
             int secondNoToRemove = array.length / 2;
             newArray = new int[array.length - 2];
             int j = 0;
 
-            //Iterate through the array
             for (int i = 0; i < array.length; i++)
             {
-                // Check if the element should be added
                 if(i != firstNoToRemove && i != secondNoToRemove)
                 {
                     newArray[j] = array[i];
@@ -104,17 +91,14 @@ public class Main {
                 }
             }
         }
-        else//uneven
+        else// uneven
         {
-            // Get the index of the element to be removed
             int noToRemove = array.length / 2;
             newArray = new int[array.length - 1];
             int j = 0;
 
-            //Iterate through the array
             for (int i = 0; i < array.length; i++)
             {
-                // Check if the element should be added
                 if(i != noToRemove)
                 {
                     newArray[j] = array[i];
@@ -123,8 +107,20 @@ public class Main {
             }
         }
 
-        //print the array
-        printArray(newArray, "newArray");
+        printArray(newArray, "MiddleElementsRemoved");
+    }
+
+    private static void removeMiddleElementsWithArrayLists(ArrayList<Integer> arrayList) {
+        int elementsRemovals = 2; // Assuming array is even
+
+        // Check if the array is uneven
+        if(arrayList.size() % 2 != 0)
+            elementsRemovals = 1;
+
+        for (int i = 1; i <= elementsRemovals; i++)
+            arrayList.remove(arrayList.size() / 2);
+
+        printArray(arrayList, "MiddleElementsRemoved");
     }
 
     private static void q2PartD() {
@@ -146,7 +142,7 @@ public class Main {
                 array[i] = right;
         }
 
-        printArray(array);
+        printArray(array, "q2PartD");
     }
 
     private static void q2PartC(int[] array) {
@@ -155,24 +151,22 @@ public class Main {
             if (array[i] % 2 == 0)
                 array[i] = 0;
 
-        printArray(array, "Replace even numbers with 0");
+        printArray(array, "q2PartC");
     }
 
-    private static void q2BShift1ToTheRight(int[] array) {
+    private static void q2PartB(int[] array) {
         // Shift all elements by one to the right and move the last element into the first
 
         int last = array[array.length-1];
         for(int i = array.length-1; i >= 1; i--)
-        {
             array[i] = array[i - 1];
-        }
 
         array[0] = last;
 
-        printArray(array, "Shift one to the right");
+        printArray(array, "q2PartB");
     }
 
-    private static void q2ASwapFirstAndLast(int[] array) {
+    private static void q2PartA(int[] array) {
         // Swap the first and last elements in the array.
         int first = array[0];
         int last = array[array.length-1];
@@ -180,8 +174,7 @@ public class Main {
         array[0] = last;
         array[array.length-1] = first;
 
-        printArray(array, "Swap");
-
+        printArray(array, "q2PartA");
     }
 
     public static void q1() {
@@ -193,6 +186,11 @@ public class Main {
         • Only the first and last element.
         */
 
+
+        System.out.println("\n/********************* Question 1 *********************/");
+
+        // Every element at an even index.
+        System.out.println("q1Part1");
         int[] array = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         for(int i = 0; i < 10; i++)
         {
@@ -202,7 +200,8 @@ public class Main {
             }
         }
 
-        System.out.println("");
+        // Every even element.
+        System.out.println("\nq1Part2");
 
         for(int i = 0; i < 10; i++)
         {
@@ -212,30 +211,25 @@ public class Main {
             }
         }
 
-        System.out.println("\n");
+        // All elements in reverse order.
+        System.out.println("\nq1Part3");
 
         for(int i = array.length - 1; i > -1; i--)
         {
             System.out.print(array[i]);
         }
 
-        System.out.print("\n" + array[0]);
+        // Only the first and last element.
+        System.out.println("\nq1Part4");
+        System.out.println(array[0]);
         System.out.println(array[array.length - 1]);
     }
 
-    private static void printArray(int[] array) {
-        //System.out.println("Original Array: "
-        //                           + Arrays.toString(arr));
-        for (int i = 0; i <= array.length-1; i++)
-        {
-            System.out.println(" Element [" + i + "]: " + array[i]);
-        }
+    private static void printArray(int[] array, String arrayName) {
+        System.out.println(arrayName + ": " + Arrays.toString(array));
     }
 
-    private static void printArray(int[] array, String arrayName) {
-        for (int i = 0; i <= array.length-1; i++)
-        {
-            System.out.println(arrayName + " Element [" + i + "]: " + array[i]);
-        }
+    private static void printArray(final List<Integer> list, String listName) {
+        System.out.println(listName + ": " + list);
     }
 }
