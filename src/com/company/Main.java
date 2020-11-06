@@ -23,8 +23,36 @@ public class Main {
     }
 
     public static void chapter6() {
-        q1();
-        q2();
+//        q1();
+//        q2();
+        q4();
+    }
+
+    private static void q4() {
+        // Write a method sumWithoutSmallest that computes the sum of an array of values, except for the smallest one,
+        // in a single loop. In the loop, update the sum and the smallest value. After the loop, return the difference.
+
+        // Declare the method
+        sumWithoutSmallest();
+    }
+
+    private static void sumWithoutSmallest() {
+        ArrayList<Integer> arrayList = new ArrayList<>(Arrays.asList(28, 27, 492, 765, 4, 9, 8, 274, 762, 9, 45, 73));
+
+        int total = 0, smallestNumber = arrayList.get(0);
+
+        for (int i = 0; i < arrayList.size(); i++)
+        {
+            if (arrayList.get(i) < smallestNumber)
+                smallestNumber = arrayList.get(i);
+
+            total += arrayList.get(i);
+
+            if (i == arrayList.size() - 1)
+                total -= smallestNumber;
+        }
+
+        System.out.println("Total - SmallestNumber: " + (total - smallestNumber));
     }
 
     private static void q2() {
@@ -37,11 +65,11 @@ public class Main {
             d. Replace each element except the first and last by the larger of its two neighbors.
             e. Remove the middle element if the array length is odd, or the middle two
             elements if the length is even.
-            f.  Move all even elements to the front, otherwise preserving the order of the elements.
+            f. Move all even elements to the front, otherwise preserving the order of the elements.
             g. Return the second-largest element in the array.
             h. Return true if the array is currently sorted in increasing order.
-            i.  Return true if the array contains two adjacent duplicate elements.
-            j.  Return true if the array contains duplicate elements (which need not be adjacent).
+            i. Return true if the array contains two adjacent duplicate elements.
+            j. Return true if the array contains duplicate elements (which need not be adjacent).
         * */
 
         System.out.println("\n/********************* Question 2 *********************/");
